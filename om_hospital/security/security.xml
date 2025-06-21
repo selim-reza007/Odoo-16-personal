@@ -22,6 +22,20 @@
             <field name="comment">this user will have access to patient details.</field>
         </record>
 
+        <record id="receptionist_own_created_tags" model="ir.rule">
+            <field name="name">Receptionist: own created tags</field>
+            <field ref="model_hospital_tags" name="model_id"/>
+            <field name="groups" eval="[(4, ref('om_hospital.group_hospital_receptionist'))]"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+        </record>
+
+        <record id="doctor_own_created_tags" model="ir.rule">
+            <field name="name">Doctor: own created tags</field>
+            <field ref="model_hospital_tags" name="model_id"/>
+            <field name="groups" eval="[(4, ref('om_hospital.group_hospital_doctor'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
     </data>
 
 </odoo>
