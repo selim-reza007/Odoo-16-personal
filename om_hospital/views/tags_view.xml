@@ -10,6 +10,7 @@
     <menuitem
             id="menu_hospital_tag"
             name="Tags"
+            groups="group_hospital_receptionist"
             parent="menu_hospital_configuration"
             action="action_view_om_tags"
             sequence="4"

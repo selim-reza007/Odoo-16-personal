@@ -7,8 +7,8 @@
     "depends": ["base"],
     "installable": True,
     "data": [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
         'views/root_menu_view.xml',
         'views/doctor_view.xml',
         'views/patient_view.xml',
