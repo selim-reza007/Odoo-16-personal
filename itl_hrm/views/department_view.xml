@@ -39,6 +39,7 @@
             sequence="2"
             parent="menu_itl_hrm_root"
             action="action_itl_department_view"
+            groups="itl_hrm.group_itl_hrm_assistant_hr"
     />
 
 </odoo>

@@ -7,6 +7,7 @@
     "depends": ["base"],
     "installable": True,
     "data": [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/menu_view.xml',
         'views/employee_view.xml',

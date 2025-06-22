@@ -4,7 +4,7 @@
     <menuitem
             id="menu_itl_hrm_root"
             name="ITL HRM"
-            sequence="1"
+            sequence="2"
     />
 
 </odoo>

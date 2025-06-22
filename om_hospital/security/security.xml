@@ -36,6 +36,8 @@
             <field name="domain_force">[]</field>
         </record>
 
+
+
     </data>
 
 </odoo>
