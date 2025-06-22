@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+itl_hrm.access_itl_employee,access_itl_employee,itl_hrm.model_itl_employee,base.group_user,1,1,1,1
+itl_hrm.access_itl_assets,access_itl_assets,itl_hrm.model_itl_assets,base.group_user,1,1,1,1
+itl_hrm.access_itl_department,access_itl_department,itl_hrm.model_itl_department,base.group_user,1,1,1,1

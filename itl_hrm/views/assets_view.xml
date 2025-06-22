@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="itl_assets_view_form" model="ir.ui.view">
+        <field name="model">itl.assets</field>
+        <field name="name">itl.assets.form</field>
+        <field name="arch" type="xml">
+            <form string="Assets Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="itl_assets_view_tree" model="ir.ui.view">
+        <field name="model">itl.assets</field>
+        <field name="name">itl.assets.tree</field>
+        <field name="arch" type="xml">
+            <tree string="Assets">
+                <field name="name"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_itl_assets_view" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">itl.assets</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_itl_assets"
+            name="Assets"
+            sequence="3"
+            parent="menu_itl_hrm_root"
+            action="action_itl_assets_view"
+    />
+
+</odoo>
