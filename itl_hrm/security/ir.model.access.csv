@@ -1,11 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-itl_hrm.access_itl_employee_employee,access_itl_employee,itl_hrm.model_itl_employee,base.group_user,1,0,0,0
+itl_hrm.access_itl_employee_employee,access_itl_employee,itl_hrm.model_itl_employee,itl_hrm.group_itl_hrm_employee,1,0,0,0
 itl_hrm.access_itl_employee_ass_hr,access_itl_employee,itl_hrm.model_itl_employee,itl_hrm.group_itl_hrm_assistant_hr,1,1,1,0
 itl_hrm.access_itl_employee_hr,access_itl_employee,itl_hrm.model_itl_employee,itl_hrm.group_itl_hrm_hr,1,1,1,1
-
-itl_hrm.access_itl_assets_employee,access_itl_assets,itl_hrm.model_itl_assets,itl_hrm.group_itl_hrm_employee,1,0,0,0
-itl_hrm.access_itl_assets_ass_hr,access_itl_assets,itl_hrm.model_itl_assets,itl_hrm.group_itl_hrm_assistant_hr,1,1,1,0
-itl_hrm.access_itl_assets_hr,access_itl_assets,itl_hrm.model_itl_assets,itl_hrm.group_itl_hrm_hr,1,1,1,1
 
 itl_hrm.access_itl_department_employee,access_itl_department,itl_hrm.model_itl_department,itl_hrm.group_itl_hrm_employee,1,0,0,0
 itl_hrm.access_itl_department_ass_hr,access_itl_department,itl_hrm.model_itl_department,itl_hrm.group_itl_hrm_assistant_hr,1,1,1,0

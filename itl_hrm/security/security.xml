@@ -2,45 +2,61 @@
 <odoo>
     <data>
 
+        <!-- Group Definitions -->
         <record id="itl_hrm_group_category" model="ir.module.category">
             <field name="name">ITL HRM</field>
             <field name="sequence">1</field>
         </record>
 
         <record id="group_itl_hrm_employee" model="res.groups">
-            <field name="name">Employee: See personal data only</field>
+            <field name="name">Employee</field>
             <field name="category_id" ref="itl_hrm.itl_hrm_group_category"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-            <field name="comment">Employee will be able to see their employee info only.</field>
         </record>
 
         <record id="group_itl_hrm_assistant_hr" model="res.groups">
             <field name="name">Ass. HR: Manage departments</field>
             <field name="category_id" ref="itl_hrm.itl_hrm_group_category"/>
             <field name="implied_ids" eval="[(4, ref('itl_hrm.group_itl_hrm_employee'))]"/>
-            <field name="comment">Ass. HR is allowed to manage departments.</field>
         </record>
 
         <record id="group_itl_hrm_hr" model="res.groups">
             <field name="name">HR: Manage All data</field>
             <field name="category_id" ref="itl_hrm.itl_hrm_group_category"/>
             <field name="implied_ids" eval="[(4, ref('itl_hrm.group_itl_hrm_assistant_hr'))]"/>
-            <field name="comment">HR is allowed to manage all data.</field>
         </record>
 
-        <record id="itl_hrm_IT_employee_info" model="ir.rule">
-            <field name="name">IT Employee info</field>
-            <field ref="model_itl_employee" name="model_id"/>
-            <field name="domain_force">[('department.name', '=', 'IT')]</field>
+        <!-- Record Rules for Assistant HR -->
+
+        <!-- Single rule for Ass. HR: Read + Write + Create if department.manager_user_id == user -->
+        <record id="itl_rule_ass_hr_employee_rw" model="ir.rule">
+            <field name="name">Assistant HR - Read/Write/Create own department employees</field>
+            <field name="model_id" ref="itl_hrm.model_itl_employee"/>
+            <field name="domain_force">[('department_id.manager_user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('itl_hrm.group_itl_hrm_assistant_hr'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+        </record>
+
+        <!-- Optional: normal employees can only read their own record -->
+        <record id="itl_rule_employee_self_read" model="ir.rule">
+            <field name="name">Employee - See Own Record</field>
+            <field name="model_id" ref="itl_hrm.model_itl_employee"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('itl_hrm.group_itl_hrm_employee'))]"/>
             <field name="perm_read" eval="1"/>
         </record>
 
-        <record id="itl_hrm_ass_hr_all_info" model="ir.rule">
-            <field name="name">Ass. HR all employee info</field>
-            <field ref="model_itl_employee" name="model_id"/>
+        <!-- HR full access -->
+        <record id="itl_rule_hr_all" model="ir.rule">
+            <field name="name">HR - Full Access</field>
+            <field name="model_id" ref="itl_hrm.model_itl_employee"/>
             <field name="domain_force">[]</field>
-            <field name="groups" eval="[(4, ref('itl_hrm.group_itl_hrm_assistant_hr'))]"/>
+            <field name="groups" eval="[(4, ref('itl_hrm.group_itl_hrm_hr'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
         </record>
 
     </data>

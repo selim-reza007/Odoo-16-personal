@@ -1,1 +1,1 @@
-from . import employee, department, assets
+from . import employee, department

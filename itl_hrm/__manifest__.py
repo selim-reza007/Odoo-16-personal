@@ -7,12 +7,11 @@
     "depends": ["base"],
     "installable": True,
     "data": [
-        'security/security.xml',
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/menu_view.xml',
         'views/employee_view.xml',
         'views/department_view.xml',
-        'views/assets_view.xml',
     ],
     'license': 'LGPL-3',
     "application": True,
