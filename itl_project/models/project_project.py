@@ -45,6 +45,21 @@ class ProjectProject(models.Model):
         string="Sponsor"
     )
 
+    is_project_leader = fields.Boolean(compute='_compute_is_project_leader')
+    is_project_coordinator = fields.Boolean(compute='_compute_is_project_coordinator')
+
+    """Check if current user is the project leader or not. """
+    @api.depends_context('uid')
+    def _compute_is_project_leader(self):
+        for record in self:
+            record.is_project_leader = (record.user_id.id == self.env.uid)
+
+    """Check if current user is the project leader or not. """
+    @api.depends_context('uid')
+    def _compute_is_project_coordinator(self):
+        for record in self:
+            record.is_project_coordinator = (record.project_coordinator.id == self.env.uid)
+
     # Method to open KPI form and tree views
     def action_view_kpi(self):
         self.ensure_one()
