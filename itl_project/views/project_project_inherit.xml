@@ -89,12 +89,11 @@
         <field name="arch" type="xml">
 
             <!--            renaming project manager-->
-            <xpath expr="//field[@name='user_id']" position="replace">
-                <field name="project_leader_id" widget="many2one_avatar_user"/>
-
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Project Leader</attribute>
             </xpath>
 
-            <xpath expr="//field[@name='project_leader_id']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                 <field name="assigned_members" widget="many2many_avatar_user"/>
                 <field name="project_progress" widget="progressbar"/>
             </xpath>
